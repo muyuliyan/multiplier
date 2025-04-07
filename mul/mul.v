@@ -1,10 +1,10 @@
 /* x*y  */
 
 module multiplier(
-    input mul_clk;
-    input reset;
-    input mul;
-    output complete;
+    input mul_clk,
+    input reset,
+    input mul,
+    output complete,
     input [31:0] x,y,
     output [63:0]result
 );

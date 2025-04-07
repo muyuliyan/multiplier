@@ -6,4 +6,4 @@ module mult_gen_0(
     input [31:0]B,
     output [31:0]P,
     input SCLR,
-)
+);
