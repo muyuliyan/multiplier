@@ -2,7 +2,7 @@ module BoothEncoder(
     input [2:0]code,
     output zero,
     output one,
-    putput two,
+    output two,
     output neg1,
     output neg2
 );
