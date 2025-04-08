@@ -37,7 +37,7 @@ wire zero_14, one_14, two_14, neg1_14, neg2_14;
 wire zero_15, one_15, two_15, neg1_15, neg2_15;
 wire zero_16, one_16, two_16, neg1_16, neg2_16;
 
-always @(*posedge mul_clk) begin
+always @(posedge mul_clk) begin
     if (resetn) begin
         mul_signed_buffer <= 1'b0;
         x_r <= 33'b0;
@@ -78,7 +78,7 @@ assign code_14 = y_r[29:27];
 assign code_15 = y_r[31:29];
 assign code_16 = y_r[33:31];
 
-always @(*posedge mul_clk) begin
+always @(posedge mul_clk) begin
     //Booth编码
     BoothEncoder BoothEncoder_inst0(
         .code(code_0),
@@ -234,7 +234,7 @@ always @(*posedge mul_clk) begin
     );
 end
 
-always @(*posedge mul_clk) begin
+always @(posedge mul_clk) begin
     //部分积
     PartialGen PartialGen_inst0(
         .A(x_r),
@@ -407,7 +407,7 @@ always @(*posedge mul_clk) begin
     );
 end
 
-always @(*posedge) begin
+always @(posedge) begin
     WallaceTreeAdder WallaceTreeAdder_inst(
         .partial_in0(partial_0),
         .partial_in1(partial_1),
@@ -429,5 +429,7 @@ always @(*posedge) begin
         .product_out(product)
     );
 end
+
+assign result = product_out[63:0];
 
 endmodule
